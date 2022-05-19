@@ -1,9 +1,9 @@
 const fs = require('fs');
-const { stdin, stdout,stderr } = process;
+const { stdin, stdout} = process;
 const path = require('path');
 const pafthFile = path.join(__dirname, 'text.txt');
 
-console.log('Привет. Как ты ?');
+console.log('Привет. Как ты ? Жду текст');
 
 // const input = fs.createReadStream('source.txt', 'utf-8');
 const output = fs.createWriteStream(pafthFile);
@@ -24,5 +24,4 @@ stdin.on('data', data => {
 });
 
 process.on('exit', () => stdout.write('Удачи!'));
-process.on('SIGINT', () => {
-process.exit();});
+process.on('SIGINT', () => {process.exit();});
