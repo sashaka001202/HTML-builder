@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const { stdin, stdout} = process;
 const path = require('path');
@@ -14,8 +15,8 @@ stdin.on('data', data => {
 
   output.write(data);
 
-  const dataString=data.toString().split('');
-  const newData= dataString.splice(0, dataString.length-2).join('');
+  const dataString=data.toString().trim().split('');
+  const newData= dataString.splice(0, dataString.length).join('');
 
   if (newData=='exit'){
     process.exit();
