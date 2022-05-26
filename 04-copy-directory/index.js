@@ -1,6 +1,6 @@
 
 const path = require('path');
-const { readdir, mkdir, copyFile,rmdir } = require('fs/promises');
+const { readdir, mkdir, copyFile,rm } = require('fs/promises');
 
 
 const pathDir = path.join(__dirname);
@@ -11,7 +11,7 @@ const pathDir = path.join(__dirname);
   try {
     const pathFiles = path.join(pafthFile, 'files');
     const files = await readdir(pathFiles, { withFileTypes: true });
-    await rmdir(pathFiles + '-copy', { recursive: true });
+    await rm(pathFiles + '-copy', { recursive: true, force: true });
     await mkdir(pathFiles + '-copy', { recursive: true });
 
     for (const file of files) {
@@ -26,4 +26,3 @@ const pathDir = path.join(__dirname);
     console.error('there was an error:', error.message);
   }
 })(pathDir);
-
